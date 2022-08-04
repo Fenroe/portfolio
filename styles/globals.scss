@@ -1,0 +1,300 @@
+@import './variables.module';
+
+body, html {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: calc(18px + 0.4vh + 0.4vw);
+  background-image: linear-gradient(to top, $gray, $slate);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: $silver;
+  font-weight: 700;
+}
+
+.home-heading-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.home-heading {
+  transition: opacity 1s ease-in;
+  opacity: 0;
+
+  &:nth-child(1) {
+    transition-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    transition-delay: 1.5s;
+  }
+
+  &:nth-child(3) {
+    transition-delay: 3s;
+  }
+}
+
+.home-heading-span {
+  color: $slate;
+}
+
+.home-heading-loaded {
+  opacity: 1;
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+}
+
+.section {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 2.5rem 1rem .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.home-section {
+  justify-content: center;
+  background-color: $home-background;
+  background-image: $home-background-image;
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.about-section {
+  flex-direction: column;
+  justify-content: start;
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.contact-section {
+  flex-direction: column;
+
+}
+
+.home-button {
+  width: 10rem;
+  padding: .5rem;
+  height: 2rem;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 1s ease-in 3s, background-color .3s ease-in;
+  position: relative;
+  background-color: $silver;
+  color: $gray;
+  outline: none;
+  font-size: .9rem;
+
+  &:hover, &:focus {
+    color: $slate;
+    background-color: $yellow;
+    cursor: pointer;
+  }
+}
+
+.home-button-loaded {
+  opacity: .8;
+}
+
+.about-picture {
+  border-radius: 50%;
+  border: 1px solid $slate;
+  height: 5rem;
+  aspect-ratio: 1/1;
+  margin-bottom: 1rem;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1140px;
+}
+.about-heading {
+  text-align: center;
+  color: $silver;
+  font-weight: 700;
+}
+
+.about-text-wrapper {
+  width: 80vw;
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-text {
+  color: $silver;
+  text-align: center;
+}
+
+.about-skills-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: .3rem;
+  align-items: center;
+  justify-items: center;
+  flex-grow: 1;
+  max-height: 50vh;
+}
+
+.about-skill {
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5re;
+  align-items: center;
+  text-align: center;
+  padding: .5rem;
+  transition: transform .2s ease-in;
+
+  >svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  >span {
+    color: $silver;
+    display: none;
+    font-size: .8rem;
+  }
+
+  &:hover {
+    transform: scale(130%);
+
+    >span {
+      color: $yellow;
+    }
+  }
+}
+
+.projects-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-heading {
+  color: $silver;
+}
+
+.contact-heading {
+  color: $silver;
+}
+
+.project-wrapper {
+  width: 100%;
+  min-height: 650px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $slate;
+  border-radius: 10px;
+  margin: 1rem 0;
+  padding: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.project-image {
+  position: relative;
+  background-image: url('/snow.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 17rem;
+
+  >button {
+    background-color: transparent;
+    font-size: 2rem;
+    color: $slate;
+  }
+
+  .button-left {
+    position: absolute;
+    left: 15px;
+    top: calc(50% - .5rem);
+  }
+
+  .button-right {
+    position: absolute;
+    right: 15px;
+    top: calc(50% - .5rem);
+  }
+}
+
+.project-name {
+  color: $silver;
+}
+
+.project-text {
+  color: $silver;
+}
+
+@media screen and (min-width: 500px) {
+  @media screen and (min-height: 600px) {
+    body, html {
+      overflow-y: hidden;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .about-content {
+    flex-direction: row;
+    border-radius: 1rem;
+  }
+
+  .about-text-wrapper {
+    width: 50%;
+    height: 100%;
+  }
+
+  .about-skills-wrapper {
+    width: 50%;
+    height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .about-skill {
+    >span {
+      display: inline-block;
+    }
+  }
+}
+

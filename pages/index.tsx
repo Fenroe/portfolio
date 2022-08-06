@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import Head from 'next/head'
-import { useSnapScroll } from '../hooks'
+import { useSnapScroll, useProjectPreview } from '../hooks'
 import { aboutText } from '../data'
 import {
   Bootstrap, Express, Graphql, Javascript, MongoDB,
@@ -13,11 +13,13 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 const Home: NextPage = () => {
   const { homeRef, aboutRef, projectsRef, contactRef, scrollToProjects } = useSnapScroll()
 
+  const { imageScrollLeft, imageScrollRight } = useProjectPreview()
+
   useEffect(() => {
     document.querySelectorAll('.home-heading').forEach((heading) => heading.classList.add('home-heading-loaded'))
     document.querySelector('.home-button')?.classList.add('home-button-loaded')
   }, [])
-  
+
   return (
     <div>
       <Head>
@@ -101,18 +103,31 @@ const Home: NextPage = () => {
         <section ref={projectsRef} className="section projects-section">
           <h1 className="projects-heading">See my work</h1>
           <div className="project-wrapper">
-            <div className="project-image">
-              <button className="button-left">
-                <BsChevronLeft />
-              </button>
-              <button className="button-right">
-                <BsChevronRight />
-              </button>
+            <div className="project">
+              <div className="project-image-window">
+                <div className="project-image-wrapper">
+                  <picture>
+                    <img className="project-image" src="/snow.png" alt="Project"/>
+                  </picture>
+                  <picture>
+                    <img className="project-image" src="/star-gazing.jpg" alt="Project"/>
+                  </picture>
+                  <picture>
+                    <img className="project-image" src="/home-background.jpg" alt="Project"/>
+                  </picture>
+                </div>
+                <button className="button-left" onClick={imageScrollLeft}>
+                  <BsChevronLeft />
+                </button>
+                <button className="button-right" onClick={imageScrollRight}>
+                  <BsChevronRight />
+                </button>
+              </div>
+              <h2 className="project-name">Project</h2>
+              <p className="project-text">This project uses many things to make something cool.</p>
+              <a className="project-link" href="google.com">See it live</a>
+              <a className="project-link" href="google.com">See the code</a>
             </div>
-            <h2 className="project-name">Project</h2>
-            <p className="project-text">This project uses many things to make something cool.</p>
-            <a className="project-link" href="google.com">See it live</a>
-            <a className="project-link" href="google.com">See the code</a>
           </div>
         </section>
         <section ref={contactRef} className="section contact-section">

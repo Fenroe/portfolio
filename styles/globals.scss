@@ -212,6 +212,10 @@ h1 {
 
 .project-wrapper {
   width: 100%;
+}
+
+.project {
+  width: 100%;
   min-height: 650px;
   max-height: 80vh;
   display: flex;
@@ -224,32 +228,42 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.project-image {
-  position: relative;
-  background-image: url('/snow.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+.project-image-wrapper {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+
+  >picture {
+    min-width: 100%;
+  }
+}
+
+.project-image-window {
   width: 100%;
   height: 17rem;
+  background-color: transparent;
+  position: relative;
 
-  >button {
+  button {
+    position: absolute;
     background-color: transparent;
     font-size: 2rem;
     color: $slate;
+    top: calc(50% - .5rem);
   }
 
   .button-left {
-    position: absolute;
     left: 15px;
-    top: calc(50% - .5rem);
   }
 
   .button-right {
-    position: absolute;
     right: 15px;
-    top: calc(50% - .5rem);
   }
+}
+
+.project-image {
+  width: 100%;
+  height: 17rem;
 }
 
 .project-name {

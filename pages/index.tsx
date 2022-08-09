@@ -8,12 +8,11 @@ import {
   Next, Node, Postgresql, React as ReactIcon,
   Sass, Tailwind, Typescript
 } from "../svg"
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Carousel } from 'react-responsive-carousel'
 
 const Home: NextPage = () => {
   const { homeRef, aboutRef, projectsRef, contactRef, scrollToProjects } = useSnapScroll()
-
-  const { imageScrollLeft, imageScrollRight } = useProjectPreview()
 
   useEffect(() => {
     document.querySelectorAll('.home-heading').forEach((heading) => heading.classList.add('home-heading-loaded'))
@@ -104,25 +103,14 @@ const Home: NextPage = () => {
           <h1 className="projects-heading">See my work</h1>
           <div className="project-wrapper">
             <div className="project">
-              <div className="project-image-window">
-                <div className="project-image-wrapper">
-                  <picture>
-                    <img className="project-image" src="/snow.png" alt="Project"/>
-                  </picture>
-                  <picture>
-                    <img className="project-image" src="/star-gazing.jpg" alt="Project"/>
-                  </picture>
-                  <picture>
-                    <img className="project-image" src="/home-background.jpg" alt="Project"/>
-                  </picture>
-                </div>
-                <button className="button-left" onClick={imageScrollLeft}>
-                  <BsChevronLeft />
-                </button>
-                <button className="button-right" onClick={imageScrollRight}>
-                  <BsChevronRight />
-                </button>
-              </div>
+              <Carousel showThumbs={false} showStatus={false}>
+                <picture>
+                  <img src="/snow.png" alt="Project" />
+                </picture>
+                <picture>
+                  <img src="/star-gazing.jpg" alt="Project" />
+                </picture>
+              </Carousel>
               <h2 className="project-name">Project</h2>
               <p className="project-text">This project uses many things to make something cool.</p>
               <a className="project-link" href="google.com">See it live</a>

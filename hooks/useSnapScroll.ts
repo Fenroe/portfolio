@@ -80,7 +80,8 @@ const useSnapScroll = () => {
     }
 
     const onWheel = (e:WheelEvent) => {
-      console.log('wheel')
+      console.log(e)
+      if (e.ctrlKey) return
       if (window.innerWidth < 500 || window.innerHeight < 600) return
       e.preventDefault()
       if (loading) return
@@ -114,7 +115,6 @@ const useSnapScroll = () => {
     }
 
     const onTouchStart = (e:TouchEvent) => {
-      console.log('boop')
       if (Date.now() - lastScrollDate < 500) return
       if (Date.now() - swipeStartTime < 500) return
       if (window.innerWidth < 400 || window.innerHeight < 600) return
@@ -129,18 +129,17 @@ const useSnapScroll = () => {
 
     const onTouchMove = (e:TouchEvent) => {
       if (window.innerWidth < 500 || window.innerHeight < 600) return
-      e.preventDefault()
     }
 
     const onTouchEnd = (e:TouchEvent) => {
       if (window.innerWidth < 500 || window.innerHeight < 600) return
-      e.preventDefault()
       const touchObj = e.changedTouches[0]
       const distanceX = touchObj.pageX - swipeStart.x
       const distanceY = touchObj.pageY - swipeStart.y
       const elapsedTime = Date.now() - swipeStartTime
       if (elapsedTime > allowedTime) return
       if (Math.abs(distanceX) >= threshold && Math.abs(distanceY) <= restraint) {
+        e.preventDefault()
         if (distanceX < 0) {
           moveRight()
         } else {
@@ -149,6 +148,7 @@ const useSnapScroll = () => {
         setLastScrollDate(Date.now())
       }
       if (Math.abs(distanceY) >= threshold && Math.abs(distanceX) <= restraint) {
+        e.preventDefault()
         if (distanceY < 0) {
           moveRight()
         } else {

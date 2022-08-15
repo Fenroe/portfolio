@@ -210,6 +210,73 @@ h1 {
   color: $silver;
 }
 
+.project-previews-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1140px;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.project-preview {
+  width: 12rem;
+  height: 18rem;
+  color: $silver;
+  background-color: $slate;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-preview-img {
+  width: 100%;
+}
+
+.project-preview-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+
+}
+
+.project-preview-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.project-preview-heading {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.project-preview-description {
+  font-size: .9rem;
+  text-align: center;
+}
+
+.project-preview-btn {
+  width: 8rem;
+  padding: .5rem;
+  height: 2rem;
+  border-radius: 9999px;
+  transition: background-color .3s ease-in;
+  position: relative;
+  background-color: $silver;
+  color: $gray;
+  outline: none;
+  font-size: .9rem;
+
+  &:hover, &:focus {
+    color: $slate;
+    background-color: $yellow;
+    cursor: pointer;
+  }
+}
+
 .project-wrapper {
   width: 100%;
   display: flex;

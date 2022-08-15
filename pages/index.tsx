@@ -101,197 +101,43 @@ const Home: NextPage = () => {
         </section>
         <section ref={projectsRef} className="section projects-section">
           <h1 className="projects-heading">See my work</h1>
-          <div className="project-wrapper">
-            <div className="project">
-              <div className="project-top">
-                <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/snow.png" alt="Project" />
-                  </picture>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                  </picture>
-                </Carousel>
-                <h2 className="project-name">Project</h2>
-                <p className="project-text">This project uses many things to make something cool.</p>
-              </div>
-              <div className="project-bottom">
-                <div className="project-skills-wrapper">
-                  <div className="project-skill">
-                    <Javascript />
-                  </div>
-                  <div className="project-skill">
-                    <Bootstrap />
-                  </div>
-                  <div className="project-skill">
-                    <MongoDB />
-                  </div>
+          <div className="project-previews-wrapper">
+            <div className="project-preview">
+              <picture>
+                <img className="project-preview-img" src="/snow.png" alt="project" />
+              </picture>
+              <div className="project-preview-content">
+                <div className="project-preview-text-wrapper">
+                  <h2 className="project-preview-heading">Project</h2>
+                  <p className="project-preview-description">This is a brief description of the project</p>
                 </div>
-                <div className="project-links-wrapper">
-                  <a className="project-link" href="google.com">See it live</a>
-                  <a className="project-link" href="google.com">See the code</a>
-                </div>
+                <button className="project-preview-btn">More info</button>
               </div>
             </div>
-            <div className="project">
-              <div className="project-top">
-                <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/snow.png" alt="Project" />
-                  </picture>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                  </picture>
-                </Carousel>
-                <h2 className="project-name">Project</h2>
-                <p className="project-text">This project uses many things to make something cool.</p>
-              </div>
-              <div className="project-bottom">
-                <div className="project-skills-wrapper">
-                  <div className="project-skill">
-                    <Javascript />
-                  </div>
-                  <div className="project-skill">
-                    <Bootstrap />
-                  </div>
-                  <div className="project-skill">
-                    <MongoDB />
-                  </div>
+            <div className="project-preview">
+              <picture>
+                <img className="project-preview-img" src="/snow.png" alt="project" />
+              </picture>
+              <div className="project-preview-content">
+                <div className="project-preview-text-wrapper">
+                  <h2 className="project-preview-heading">Project</h2>
+                  <p className="project-preview-description">This is a brief description of the project</p>
                 </div>
-                <div className="project-links-wrapper">
-                  <a className="project-link" href="google.com">See it live</a>
-                  <a className="project-link" href="google.com">See the code</a>
-                </div>
+                <button className="project-preview-btn">More info</button>
               </div>
             </div>
-            <div className="project">
-              <div className="project-top">
-                <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/snow.png" alt="Project" />
-                  </picture>
-                  <picture className="project-image-wrapper">
-                    <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                  </picture>
-                </Carousel>
-                <h2 className="project-name">Project</h2>
-                <p className="project-text">This project uses many things to make something cool.</p>
-              </div>
-              <div className="project-bottom">
-                <div className="project-skills-wrapper">
-                  <div className="project-skill">
-                    <Javascript />
-                  </div>
-                  <div className="project-skill">
-                    <Bootstrap />
-                  </div>
-                  <div className="project-skill">
-                    <MongoDB />
-                  </div>
+            <div className="project-preview">
+              <picture>
+                <img className="project-preview-img" src="/snow.png" alt="project" />
+              </picture>
+              <div className="project-preview-content">
+                <div className="project-preview-text-wrapper">
+                  <h2 className="project-preview-heading">Project</h2>
+                  <p className="project-preview-description">This is a brief description of the project</p>
                 </div>
-                <div className="project-links-wrapper">
-                  <a className="project-link" href="google.com">See it live</a>
-                  <a className="project-link" href="google.com">See the code</a>
-                </div>
+                <button className="project-preview-btn">More info</button>
               </div>
             </div>
-          </div>
-          <div className="project-carousel">
-            <Carousel showStatus={false}>
-              <div className="project">
-                <div className="project-top">
-                  <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/snow.png" alt="Project" />
-                    </picture>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                    </picture>
-                  </Carousel>
-                  <h2 className="project-name">Project</h2>
-                  <p className="project-text">This project uses many things to make something cool.</p>
-                </div>
-                <div className="project-bottom">
-                  <div className="project-skills-wrapper">
-                    <div className="project-skill">
-                      <Javascript />
-                    </div>
-                    <div className="project-skill">
-                      <Bootstrap />
-                    </div>
-                    <div className="project-skill">
-                      <MongoDB />
-                    </div>
-                  </div>
-                  <div className="project-links-wrapper">
-                    <a className="project-link" href="google.com">See it live</a>
-                    <a className="project-link" href="google.com">See the code</a>
-                  </div>
-                </div>
-              </div>
-              <div className="project">
-                <div className="project-top">
-                  <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/snow.png" alt="Project" />
-                    </picture>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                    </picture>
-                  </Carousel>
-                  <h2 className="project-name">Project</h2>
-                  <p className="project-text">This project uses many things to make something cool.</p>
-                </div>
-                <div className="project-bottom">
-                  <div className="project-skills-wrapper">
-                    <div className="project-skill">
-                      <Javascript />
-                    </div>
-                    <div className="project-skill">
-                      <Bootstrap />
-                    </div>
-                    <div className="project-skill">
-                      <MongoDB />
-                    </div>
-                  </div>
-                  <div className="project-links-wrapper">
-                    <a className="project-link" href="google.com">See it live</a>
-                    <a className="project-link" href="google.com">See the code</a>
-                  </div>
-                </div>
-              </div>
-              <div className="project">
-                <div className="project-top">
-                  <Carousel className="project-image-carousel" showThumbs={false} showStatus={false} infiniteLoop showIndicators={false}>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/snow.png" alt="Project" />
-                    </picture>
-                    <picture className="project-image-wrapper">
-                      <img className="project-image" src="/star-gazing.jpg" alt="Project" />
-                    </picture>
-                  </Carousel>
-                  <h2 className="project-name">Project</h2>
-                  <p className="project-text">This project uses many things to make something cool.</p>
-                </div>
-                <div className="project-bottom">
-                  <div className="project-skills-wrapper">
-                    <div className="project-skill">
-                      <Javascript />
-                    </div>
-                    <div className="project-skill">
-                      <Bootstrap />
-                    </div>
-                    <div className="project-skill">
-                      <MongoDB />
-                    </div>
-                  </div>
-                  <div className="project-links-wrapper">
-                    <a className="project-link" href="google.com">See it live</a>
-                    <a className="project-link" href="google.com">See the code</a>
-                  </div>
-                </div>
-              </div>
-            </Carousel>
           </div>
         </section>
         <section ref={contactRef} className="section contact-section">

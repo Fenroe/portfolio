@@ -1,1 +1,1 @@
-export { Skill } from './skill'
+export { default as GalleryModal } from './GalleryModal'

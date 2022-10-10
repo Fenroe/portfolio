@@ -2,11 +2,13 @@ import type { NextPage } from 'next'
 import { useState } from 'react'
 import Head from 'next/head'
 import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdDarkMode, MdLightMode } from 'react-icons/md'
+import { MdDarkMode, MdLightMode, MdOutlineMenu } from 'react-icons/md'
 import style from '../styles/app.module.scss'
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState('light')
+
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const [showGalleryModal, setShowGalleryModal] = useState(false)
 
@@ -26,30 +28,54 @@ const Home: NextPage = () => {
         </div>
       </section>
       <nav className={theme === 'light' ? style.navbar : style.navbarDark}>
-        <a href="#">
-          <picture className={theme === 'light' ? style.navLogo : style.navLogoDark}>
-            <img className={theme === 'light' ? style.logo : style.logoDark} src={theme === 'light' ? "/logo.png" : '/logo-dark.svg'} alt="logo"/>
-          </picture>
-        </a>
-        <div className={theme === 'light' ? style.navLinks : style.navLinksDark}>
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          {theme === 'light'
-          ? 
-          <button onClick={() => setTheme('dark')}>
-            <MdDarkMode />
-            <span>Theme</span>
+        <div className={style.navbarTop}>
+          <a href="#">
+            <picture className={theme === 'light' ? style.navLogo : style.navLogoDark}>
+              <img className={theme === 'light' ? style.logo : style.logoDark} src={theme === 'light' ? "/logo.png" : '/logo-dark.svg'} alt="logo"/>
+            </picture>
+          </a>
+          <div className={theme === 'light' ? style.navLinks : style.navLinksDark}>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            {theme === 'light'
+            ? 
+            <button onClick={() => setTheme('dark')}>
+              <MdDarkMode />
+              <span>Theme</span>
+            </button>
+            : 
+            <button onClick={() => setTheme('light')}>
+              <MdLightMode />
+              <span>Theme</span>
+            </button>
+            }
+          </div>
+          <button className={theme === 'light' ? style.navMobileMenu : style.navMobileMenuDark } onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            <MdOutlineMenu />
           </button>
-          : 
-          <button onClick={() => setTheme('light')}>
-            <MdLightMode />
-            <span>Theme</span>
-          </button>
-          }
-
         </div>
+        {showMobileMenu && (
+          <div className={theme === 'light' ? style.mobileNavLinks : style.mobileNavLinksDark}>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            {theme === 'light'
+            ? 
+            <button onClick={() => setTheme('dark')}>
+              <MdDarkMode />
+              <span>Theme</span>
+            </button>
+            : 
+            <button onClick={() => setTheme('light')}>
+              <MdLightMode />
+              <span>Theme</span>
+            </button>
+            }
+        </div>
+        )}
       </nav>
       <section id="about" className={theme === 'light' ? style.about : style.aboutDark}>
         <div className={theme === 'light' ? style.sectionHeading : style.sectionHeadingDark}>

@@ -56,8 +56,9 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
+    console.log('1')
     const storedTheme = localStorage.getItem('theme')
-    if (storedTheme !== null) {
+    if (storedTheme) {
       setTheme(storedTheme)
     } else {
       const darkTheme = window.matchMedia("(prefers-color-scheme: dark)")

@@ -73,6 +73,7 @@ const Home: NextPage = () => {
         <meta name="og:title" content="Full stack developer" />
         <meta name="og:type" content="website" />
         <meta name="og:url" content="https://davidslade.dev" />
+        <meta name="og:site_name" content="Full stack developer" />
         <meta name="og:description" content="My name's David and I'm a self-taught full stack developer. I have experience with a wide range of frontend and backend technologies and I want to make your vision a reality." />
       </Head>
 

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Head from 'next/head'
 import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
@@ -24,6 +24,16 @@ const Home: NextPage = () => {
 
   const [showGalleryModal, setShowGalleryModal] = useState(false)
 
+  const setLightTheme = () => {
+    localStorage.setItem('theme', 'light')
+    setTheme('light')
+  }
+
+  const setDarkTheme = () => {
+    localStorage.setItem('theme', 'dark')
+    setTheme('dark')
+  }
+
   const handleSendMessage = async (e:any) => {
     try {
       e.preventDefault()
@@ -43,11 +53,27 @@ const Home: NextPage = () => {
     }
   }
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme')
+    if (storedTheme !== null) {
+      setTheme(storedTheme)
+    } else {
+      const darkTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      if (darkTheme.matches) {
+        setTheme('dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        setTheme('light')
+        localStorage.setItem('theme', 'light')
+      }
+    }
+  }, [])
+
   return (
     <div>
       <Head>
-        <title>My Portfolio</title>
-        <meta name="description" content="Full stack developer" />
+        <title>David Slade</title>
+        <meta name="description" content="Full stack developer and problem solver." />
       </Head>
 
       <section className={theme === 'light' ? style.landing : style.landingDark}>
@@ -70,14 +96,14 @@ const Home: NextPage = () => {
             <a href="#contact">Contact</a>
             {theme === 'light'
             ? 
-            <button onClick={() => setTheme('dark')}>
+            <button onClick={setDarkTheme}>
               <MdDarkMode />
-              <span>Theme</span>
+              <span className={style.themeSpan}>Theme</span>
             </button>
             : 
-            <button onClick={() => setTheme('light')}>
+            <button onClick={setLightTheme}>
               <MdLightMode />
-              <span>Theme</span>
+              <span className={style.themeSpan}>Theme</span>
             </button>
             }
           </div>
@@ -115,7 +141,7 @@ const Home: NextPage = () => {
               <span>Git</span>
             </div>
             <div className={theme === 'light' ? style.iconWrapper : style.iconWrapperDark}>
-              <i className="devicon-express-original colored"></i>
+              <i className={theme === 'light' ? "devicon-express-original colored" : "devicon-express-original"}></i>
               <span>Express</span>
             </div>
             <div className={theme === 'light' ? style.iconWrapper : style.iconWrapperDark}>

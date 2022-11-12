@@ -70,7 +70,9 @@ const Home: NextPage = () => {
       <Head>
         <title>David Slade</title>
         <meta name="description" content="My name's David and I'm a self-taught full stack developer. I have experience with a wide range of frontend and backend technologies and I want to make your vision a reality." />
-        <meta name="og:title" content="Full stack developer" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charSet="UTF-8" />
+        <meta name="og:title" content="David Slade" />
         <meta name="og:type" content="website" />
         <meta name="og:url" content="https://davidslade.dev" />
         <meta name="og:site_name" content="Full stack developer" />

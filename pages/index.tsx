@@ -8,7 +8,7 @@ import axios from 'axios'
 import MoonLoader  from 'react-spinners/MoonLoader'
 
 const Home: NextPage = () => {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('')
 
   const nameRef = useRef<any>()
 

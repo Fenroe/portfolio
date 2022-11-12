@@ -1,24 +1,46 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Head from 'next/head'
 import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdDarkMode, MdLightMode, MdOutlineMenu } from 'react-icons/md'
+import { MdDarkMode, MdLightMode } from 'react-icons/md'
 import style from '../styles/app.module.scss'
+import axios from 'axios'
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState('light')
 
-  const [showMobileMenu, setShowMobileMenu] = useState(false)
+  const nameRef = useRef<any>()
+
+  const emailRef = useRef<any>()
+
+  const messageRef = useRef<any>()
+
+  const [messageDelivered, setMessageDelivered] = useState(false)
 
   const [showGalleryModal, setShowGalleryModal] = useState(false)
+
+  const handleSendMessage = async (e:any) => {
+    e.preventDefault()
+    const response = await axios.post('https://fenpi-production.up.railway.app/api/contact', {
+      topic: 'New message from portfolio website',
+      name: nameRef.current.value,
+      emailAddress: emailRef.current.value,
+      heading: 'New message from portfolio website',
+      text: messageRef.current.value
+    })
+    if (response.status === 201) {
+      nameRef.current.value = ''
+      emailRef.current.value = ''
+      messageRef.current.value = ''
+    }
+    setMessageDelivered(true)
+  }
 
   return (
     <div>
       <Head>
         <title>My Portfolio</title>
         <meta name="description" content="Full stack developer" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"></link>
       </Head>
 
       <section className={theme === 'light' ? style.landing : style.landingDark}>
@@ -52,30 +74,7 @@ const Home: NextPage = () => {
             </button>
             }
           </div>
-          <button className={theme === 'light' ? style.navMobileMenu : style.navMobileMenuDark } onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            <MdOutlineMenu />
-          </button>
         </div>
-        {showMobileMenu && (
-          <div className={theme === 'light' ? style.mobileNavLinks : style.mobileNavLinksDark}>
-            <a href="#">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            {theme === 'light'
-            ? 
-            <button onClick={() => setTheme('dark')}>
-              <MdDarkMode />
-              <span>Theme</span>
-            </button>
-            : 
-            <button onClick={() => setTheme('light')}>
-              <MdLightMode />
-              <span>Theme</span>
-            </button>
-            }
-        </div>
-        )}
       </nav>
       <section id="about" className={theme === 'light' ? style.about : style.aboutDark}>
         <div className={theme === 'light' ? style.sectionHeading : style.sectionHeadingDark}>
@@ -171,8 +170,8 @@ const Home: NextPage = () => {
               <p>Working on this project taught me how to manage larger scale applications. Not only was it necessary to learn how to integrate different systems and technologies to achieve the desired result, but it was important to organise the codebase in such a way that features could continue to be implemented in the future. </p>
               <h3>What I would change</h3>
               <p>If I were to restart this project I would more carefully consider my backend solution. While Firebase is a convenient solution that allows for realtime updates, a relational database such as MySQL or PostgreSQL would allow for a more straightforward implementation of features that rely on many-to-many relationships. I would also start with a focus on accessibility instead of working towards that from the end.</p>
-              <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>See it live</button>
-              <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Check the code</button>
+              <a href="https://react-snapshot.netlify.app" target="_blank" rel="noopener noreferrer" className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>See it live</a>
+              <a href="https://github.com/Fenroe/Snapshot" target="_blank" rel="noopener noreferrer" className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Check the code</a>
             </div>
           </div>
         </div>
@@ -181,24 +180,24 @@ const Home: NextPage = () => {
           <div className={theme === 'light' ? style.projectContent : style.projectContentDark}>
             <div className={theme === 'light' ? style.projectPicturesWrapper : style.projectPicturesWrapperDark}>
               <picture className={theme === 'light' ? style.projectPicture : style.projectPictureDark}>
-                <img src="/snapshot/snapshot-home.png" alt="project" />
+                <img src="/coming-to-terms/CTT-3.png" alt="project" />
               </picture>
               <picture className={theme === 'light' ? style.projectPicture : style.projectPictureDark}>
-                <img src="/snapshot/snapshot-dark.png" alt="project" />
+                <img src="/coming-to-terms/CTT-1.png" alt="project" />
               </picture>
               <picture className={theme === 'light' ? style.projectPicture : style.projectPictureDark}>
-                <img src="/snapshot/snapshot-login.png" alt="project" />
+                <img src="/coming-to-terms/CTT-5.png" alt="project" />
               </picture>
             </div>
             <div className={theme === 'light' ? style.projectText : style.projectTextDark}>
               <h3>What I made</h3>
-              <p>Coming to Terms is a full stack MERN blog website. Visitors can create an account, read blog posts and leave comments on them. The front-end was made with React and was styled with Boostrap, while the back-end runs on Express and utilises a MongoDB database.</p>
+              <p>Coming to Terms is a full stack MERN blog website. Visitors can create an account, customise it and read blog posts. Only accounts flagged as contributors can publish articles. The front-end was made with React and was styled with Boostrap, while the back-end runs on Express and utilises a MongoDB database.</p>
               <h3>What I learned</h3>
               <p>This project involved working with a front-end and back-end codebase simultaneously, which reinforced the importance of keeping the source code organised and taking the right approach for each. My main focus was to prevent the codebases from being dependent on each other so that future changes would cause as little disruption as possible. </p>
               <h3>What I would change</h3>
               <p>In retrospect I realise that it&apos;s often better to develop features to suit the app and not the other way around. A blog website would be better suited with an admin dashboard or something of that nature instead of a forum-style user account system, and the addition of profile-customisation options are largely wasted on such a platform.</p>
-              <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>See it live</button>
-              <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Check the code</button>
+              <a href="https://comingtoterms.netlify.app/" target="_blank" rel="noopener noreferrer" className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>See it live</a>
+              <a href="https://github.com/Fenroe/coming-to-terms" target="_blank" rel="noopener noreferrer" className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Check the code</a>
             </div>
           </div>
         </div>
@@ -210,31 +209,32 @@ const Home: NextPage = () => {
             <h1>Get in touch</h1>
           </div>
         </div>
-        <form className={theme === 'light' ? style.contactForm : style.contactFormDark} action="">
+        <form className={theme === 'light' ? style.contactForm : style.contactFormDark} action="" onSubmit={(e) => handleSendMessage(e)}>
         <p>I would love to hear from you! If you have any comments or questions please don&apos;t hesitate to send me a message.</p>
           <div className={theme === 'light' ? style.formControl : style.formControlDark}>
-            <label htmlFor="name">Name</label>
-            <input name="name" id="name" type="text" placeholder="Name" />
+            <label htmlFor="name">Name*</label>
+            <input ref={nameRef} name="name" id="name" type="text" placeholder="Name" required />
           </div>
           <div className={theme === 'light' ? style.formControl : style.formControlDark}>
-            <label htmlFor="email">Email</label>
-            <input name="email" id="email" type="text" placeholder="Email"/>
+            <label htmlFor="email">Email*</label>
+            <input ref={emailRef} name="email" id="email" type="email" placeholder="Email" required/>
           </div>
           <div className={theme === 'light' ? style.formControl : style.formControlDark}>
-            <label htmlFor="message">Message</label>
-            <textarea rows={5} name="message" id="message" placeholder="Message"></textarea>
+            <label htmlFor="message">Message*</label>
+            <textarea ref={messageRef} rows={5} name="message" id="message" placeholder="Message" required></textarea>
           </div>
           <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Send</button>
+          {messageDelivered && <h2>Your message has been sent!</h2>}
         </form>
       </section>
       <footer className={theme === 'light' ? style.footer : style.footerDark}>
-        <a href="https://twitter.com/fenfullstack">
+        <a href="https://twitter.com/fenfullstack" target="_blank" rel="noopener noreferrer">
           <FaTwitter className={theme === 'light' ? style.footerIcon : style.footerIconDark} />
         </a>
-        <a href="https://github.com/Fenroe">
+        <a href="https://github.com/Fenroe" target="_blank" rel="noopener noreferrer">
           <FaGithub className={theme === 'light' ? style.footerIcon : style.footerIconDark} />
         </a>
-        <a href="https://www.linkedin.com/in/david-slade-b0a90618a/">
+        <a href="https://www.linkedin.com/in/david-slade-b0a90618a/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin className={theme === 'light' ? style.footerIcon : style.footerIconDark} />
         </a>     
       </footer>

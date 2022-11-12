@@ -76,7 +76,7 @@
 }
 
 .navLinks {
-  display: none;
+  display: flex;
   gap: 1rem;
   align-items: center;
 
@@ -86,7 +86,7 @@
     color: black;
 
     &:hover {
-      font-weight: bold;
+      color: white;
     }
   }
 
@@ -104,56 +104,13 @@
 
     &:hover {
       cursor: pointer;
-      font-weight: bold;
+      color: white;
     }
-  }
-
-  @media screen and (min-width: 992px) {
-    display: flex;
-  }
-}
-
-.navMobileMenu {
-  background-color: transparent;
-  border: none;
-  min-height: 100%;
-  width: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 992px) {
-    display: none;
-  }
-}
-
-.navMobileMenuDark {
-  background-color: transparent;
-  border: none;
-  min-height: 100%;
-  width: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  color: white;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 992px) {
-    display: none;
   }
 }
 
 .navLinksDark {
-  display: none;
+  display: flex;
   gap: 1rem;
   align-items: center;
 
@@ -163,7 +120,7 @@
     color: white;
 
     &:hover {
-      font-weight: bold;
+      color: black;
     }
   }
 
@@ -181,12 +138,8 @@
 
     &:hover {
       cursor: pointer;
-      font-weight: bold;
+      color: black;
     }
-  }
-
-  @media screen and (min-width: 992px) {
-    display: flex;
   }
 }
 
@@ -195,7 +148,7 @@
   width: 100%;
   max-width: 100vw;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
   gap: 1rem;
   padding: 1rem 0;
@@ -235,7 +188,7 @@
   width: 100%;
   max-width: 100vw;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
   gap: 1rem;
   padding: 1rem 0;
@@ -372,18 +325,36 @@
 
 .aboutSkills {
   margin: 3rem 0 0 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .aboutSkillsDark {
   margin: 3rem 0 0 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .projects {
@@ -633,16 +604,24 @@
 
 .navLogo {
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 992px) {
+    display: flex;
+  }
 }
 
 .navLogoDark {
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 992px) {
+    display: flex;
+  }
 }
 
 .logo {
@@ -658,11 +637,15 @@
 .iconWrapper {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
+  align-items: center;
 }
 
 .iconWrapperDark {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
+  align-items: center;
 }
 
 .contact {
@@ -808,6 +791,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  width: 15rem;
 
   &:hover {
     color: #fff;
@@ -839,6 +823,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  width: 15rem;
 
   &:hover {
     color: #1A1A1A;

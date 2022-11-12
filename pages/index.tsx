@@ -69,6 +69,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>David Slade</title>
+        <meta name="author" content="David Slade" />
         <meta name="description" content="Full stack developer and problem solver." />
       </Head>
 

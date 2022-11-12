@@ -6,6 +6,8 @@ import { MdDarkMode, MdLightMode } from 'react-icons/md'
 import style from '../styles/app.module.scss'
 import axios from 'axios'
 import MoonLoader  from 'react-spinners/MoonLoader'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from 'react-responsive-carousel'
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState('')

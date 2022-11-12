@@ -71,7 +71,7 @@
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-  min-height: 5vh;
+  min-height: 3rem;
   max-width: 100vw;
 }
 
@@ -465,8 +465,14 @@
 }
 
 .projectPicture {
+  display: flex;
+  justify-content: center;
+
   >img {
     width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    margin: 1rem;
   }
 
   &:nth-child(2n) {
@@ -516,8 +522,14 @@
 }
 
 .projectPictureDark {
+  display: flex;
+  justify-content: center;
+
   >img {
     width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    margin: 1rem;
   }
 
   &:nth-child(2n) {

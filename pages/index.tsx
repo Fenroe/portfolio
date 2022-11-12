@@ -5,6 +5,7 @@ import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
 import style from '../styles/app.module.scss'
 import axios from 'axios'
+import MoonLoader  from 'react-spinners/MoonLoader'
 
 const Home: NextPage = () => {
   const [theme, setTheme] = useState('light')
@@ -15,25 +16,31 @@ const Home: NextPage = () => {
 
   const messageRef = useRef<any>()
 
+  const [sendingMessage, setSendingMessage] = useState(false)
+
   const [messageDelivered, setMessageDelivered] = useState(false)
+
+  const [deliveryError, setDeliveryError] = useState(false)
 
   const [showGalleryModal, setShowGalleryModal] = useState(false)
 
   const handleSendMessage = async (e:any) => {
-    e.preventDefault()
-    const response = await axios.post('https://fenpi-production.up.railway.app/api/contact', {
-      topic: 'New message from portfolio website',
-      name: nameRef.current.value,
-      emailAddress: emailRef.current.value,
-      heading: 'New message from portfolio website',
-      text: messageRef.current.value
-    })
-    if (response.status === 201) {
-      nameRef.current.value = ''
-      emailRef.current.value = ''
-      messageRef.current.value = ''
+    try {
+      e.preventDefault()
+      setSendingMessage(true)
+      await axios.post('https://fenpi-production.up.railway.app/api/contact', {
+        topic: 'New message from portfolio website',
+        name: nameRef.current.value,
+        emailAddress: emailRef.current.value,
+        heading: 'New message from portfolio website',
+        text: messageRef.current.value
+      })
+      setSendingMessage(false)
+      setMessageDelivered(true)
+    } catch (err) {
+      setSendingMessage(false)
+      setDeliveryError(true)
     }
-    setMessageDelivered(true)
   }
 
   return (
@@ -209,6 +216,21 @@ const Home: NextPage = () => {
             <h1>Get in touch</h1>
           </div>
         </div>
+        {sendingMessage &&
+        <div className={style.contactContainer}>
+          <MoonLoader />
+        </div>}
+        {messageDelivered &&
+        <div className={style.contactContainer}>
+          <h2>Your message has been sent!</h2>
+          <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark} onClick={() => setMessageDelivered(false)}>Back</button>
+        </div>}
+        {deliveryError &&
+          <div className={style.contactContainer}>
+            <h2>Sorry, your message could not be delivered</h2>
+            <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark} onClick={() => setDeliveryError(false)}>Back</button>
+          </div>}
+        {!sendingMessage && !messageDelivered && !deliveryError &&
         <form className={theme === 'light' ? style.contactForm : style.contactFormDark} action="" onSubmit={(e) => handleSendMessage(e)}>
         <p>I would love to hear from you! If you have any comments or questions please don&apos;t hesitate to send me a message.</p>
           <div className={theme === 'light' ? style.formControl : style.formControlDark}>
@@ -224,8 +246,7 @@ const Home: NextPage = () => {
             <textarea ref={messageRef} rows={5} name="message" id="message" placeholder="Message" required></textarea>
           </div>
           <button className={theme === 'light' ? style.siteBtn : style.siteBtnDark}>Send</button>
-          {messageDelivered && <h2>Your message has been sent!</h2>}
-        </form>
+        </form>}
       </section>
       <footer className={theme === 'light' ? style.footer : style.footerDark}>
         <a href="https://twitter.com/fenfullstack" target="_blank" rel="noopener noreferrer">

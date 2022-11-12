@@ -832,3 +832,12 @@
     transform: translateY(-2px);
   }
 }
+
+.contactContainer {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}

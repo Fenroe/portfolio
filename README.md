@@ -20,8 +20,8 @@ If you'd like to run this application locally then follow these steps:
 * Install npm packages with `npm install`.
 * If you want to use the contact form you will need to set up an .env file in the root of the project directory containing the following variables:
 ```
-REACT_APP_API_ENDPOINT=myapiendpoint.com
+NEXT_PUBLIC_API_ENDPOINT=myapiendpoint.com
 ```
-* `REACT_APP_API_ENDPOINT` is the endpoint of your own mailer API. Depending on your APIs configuration you may need to make additional changes to the source code.
+* `NEXT_PUBLIC_API_ENDPOINT` is the endpoint of your own mailer API. Depending on your APIs configuration you may need to make additional changes to the source code.
 * Start the application using `npm run dev`.
 * The application should now be live on http://localhost:3000.

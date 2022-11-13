@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio 
 
-## Getting Started
+This is my personal portfolio. The website was built using NextJS and styled with Sass. It also utilises an API to send messages from visitors to my email address. You can check out the API [here](https://github.com/Fenroe/fenpi).
 
-First, run the development server:
+# Live Preview
 
-```bash
-npm run dev
-# or
-yarn dev
+https://davidslade.dev
+
+# Tech Stack
+
+* NextJS
+* Sass
+* Typescript
+
+# Getting Started
+
+If you'd like to run this application locally then follow these steps:
+
+* Clone the repository to your computer.
+* Install npm packages with `npm install`.
+* If you want to use the contact form you will need to set up an .env file in the root of the project directory containing the following variables:
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+REACT_APP_API_ENDPOINT=myapiendpoint.com
+```
+* `REACT_APP_API_ENDPOINT` is the endpoint of your own mailer API. Depending on your APIs configuration you may need to make additional changes to the source code.
+* Start the application using `npm run dev`.
+* The application should now be live on http://localhost:3000.

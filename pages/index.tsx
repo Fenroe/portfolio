@@ -36,7 +36,7 @@ const Home: NextPage = () => {
     try {
       e.preventDefault()
       setSendingMessage(true)
-      await axios.post('https://fenpi-production.up.railway.app/api/contact', {
+      await axios.post(process.env.REACT_APP_API_ENDPOINT!, {
         topic: 'New message from portfolio website',
         name: nameRef.current.value,
         emailAddress: emailRef.current.value,

@@ -36,7 +36,6 @@ const Home: NextPage = () => {
     try {
       e.preventDefault()
       setSendingMessage(true)
-      console.log(process.env.NEXT_PUBLIC_API_ENDPOINT)
       await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT!, {
         topic: 'New message from portfolio website',
         name: nameRef.current.value,

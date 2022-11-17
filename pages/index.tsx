@@ -59,8 +59,10 @@ const Home: NextPage = () => {
       const darkTheme = window.matchMedia("(prefers-color-scheme: dark)")
       if (darkTheme.matches) {
         localStorage.setItem('theme', 'dark')
+        setTheme('dark')
       } else {
         localStorage.setItem('theme', 'light')
+        setTheme('light')
       }
     }
   }, [])
